@@ -1,3 +1,8 @@
+#install
+npm install "styled-components@5.3.10"
+npm install react-router-dom@6
+npm install react-bootstrap bootstrap
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
