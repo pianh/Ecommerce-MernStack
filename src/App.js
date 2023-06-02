@@ -1,16 +1,30 @@
-import { Button } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components'
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// import { Button } from 'antd';
+import { routes } from './routes'
+import HeaderComponent from "./components/HeaderComponents/HeaderComponent";
+import DefaultComponent from "./components/DefaultComponent/DefaultComponent";
 function App() {
-  const dispatch = useDispatch()
-  const Button = styled.button({
-    background: 'red'
-  });
+  
   return (
-    <>
-      <h1>Hello</h1>
-      <Button type="primary">Primary Button</Button>
-    </>
+    <div>
+      <Router>
+        <Routes>
+          {routes.map((route)=> {
+            const Page = route.page
+            const Layout = route.isShowHeader ? DefaultComponent : Fragment
+            return (
+              <Route key={route.path} path={route.path} element={
+                <Layout>
+                  <Page/>
+                </Layout>
+            
+              } />
+            )
+          })}
+        </Routes>
+      </Router>
+    </div>
     
   );
 }
